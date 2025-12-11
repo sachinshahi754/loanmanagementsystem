@@ -1,5 +1,5 @@
 <?php
-include ("connection.php");
+include("connection.php");
 
 session_start();
 if (isset($_SESSION['admin_id'])) {
@@ -33,7 +33,7 @@ if (isset($_SESSION['admin_id'])) {
             window.history.replaceState(null, null, window.location.href);
         }
     </script>
-
+    <a href="www.google.com"></a>
 </head>
 
 <body>
@@ -114,7 +114,7 @@ if (isset($_SESSION['admin_id'])) {
                 $select_loan = "SELECT * FROM loan WHERE status='approved'";
                 $loan_data = mysqli_query($conn, $select_loan);
                 $total_loan = mysqli_num_rows($loan_data);
-                
+
                 //total loan with pending loan
                 $select_loan = "SELECT * FROM loan WHERE status='pending'";
                 $loan_data = mysqli_query($conn, $select_loan);
@@ -143,7 +143,7 @@ if (isset($_SESSION['admin_id'])) {
                             <span><?php echo $total_loan ?></span>
                             <div class="pending">
                                 <p>Pending</p>
-                                <span><?php echo $total_pending?></span>
+                                <span><?php echo $total_pending ?></span>
                             </div>
 
                         </div>
@@ -181,7 +181,7 @@ if (isset($_SESSION['admin_id'])) {
                         </thead>
                         <tbody>
                             <?php
-                            include ('connection.php');
+                            include('connection.php');
                             $request_query = "SELECT `user_id`,`loan_id`, `user_id`, `loan_amount`, `loan_plan`, `loan_type`, `status` FROM `loan` WHERE status='pending';";
                             $request_data = mysqli_query($conn, $request_query);
 
@@ -224,7 +224,8 @@ if (isset($_SESSION['admin_id'])) {
                                             <div class="action_data">
 
                                                 <a href="approve.php?id=<?php echo $result['loan_id'] ?>"><button
-                                                        style="background-color:rgb(89, 183, 110);" onclick="return confirmApprove()">Approve</button></a>
+                                                        style="background-color:rgb(89, 183, 110);"
+                                                        onclick="return confirmApprove()">Approve</button></a>
 
                                                 <a href="delete_request.php?id=<?php echo $result['loan_id'] ?>"><button
                                                         onclick="return confirmDelete()">Reject</button></a>
@@ -497,7 +498,7 @@ if (isset($_SESSION['admin_id'])) {
         function confirmDeleteUser() {
             return confirm('Are you sure. you want to delete the user.');
         }
-        function confirmApprove(){
+        function confirmApprove() {
             return confirm('Are you sure. you want to approve the request.');
         }
 
@@ -525,7 +526,7 @@ if (isset($_SESSION['admin_id'])) {
             document.querySelector('.loan_request').classList.add("hide");
             document.querySelector('.user_container').classList.remove("hide");
             document.querySelector('.payment_container').classList.add("hide");
-          //  document.querySelector('.dashboard').classList.add("hide");
+            //  document.querySelector('.dashboard').classList.add("hide");
             document.querySelector('.loan_container').classList.add("hide");
 
 
@@ -541,7 +542,7 @@ if (isset($_SESSION['admin_id'])) {
             document.querySelector('.user_container').classList.add("hide");
             document.querySelector('.payment_container').classList.add("hide");
             document.querySelector('.loan_container').classList.add("hide");
-           // document.querySelector('.dashboard').classList.remove("hide");
+            // document.querySelector('.dashboard').classList.remove("hide");
 
 
         }
@@ -556,7 +557,7 @@ if (isset($_SESSION['admin_id'])) {
             document.querySelector('.user_container').classList.add("hide");
             document.querySelector('.loan_request').classList.add("hide");
             document.querySelector('.payment_container').classList.add("hide");
-           // document.querySelector('.dashboard').classList.add("hide");
+            // document.querySelector('.dashboard').classList.add("hide");
 
         }
         function paymentShow() {
@@ -569,7 +570,7 @@ if (isset($_SESSION['admin_id'])) {
             document.querySelector('.loan_request').classList.add("hide");
             document.querySelector('.user_container').classList.add("hide");
             document.querySelector('.payment_container').classList.remove("hide");
-           // document.querySelector('.dashboard').classList.add("hide");
+            // document.querySelector('.dashboard').classList.add("hide");
         }
     </script>
 </body>
